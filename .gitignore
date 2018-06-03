@@ -1,0 +1,8 @@
+cmake-build-debug/
+CMakeFiles/
+.idea/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+tin
+tin.cbp
