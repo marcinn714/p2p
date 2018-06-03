@@ -8,7 +8,7 @@
 void GetFile::execute(void) {
     if (NetMainThread::getNodeInfo() == nullptr)
         return;
-    InfoMessage* msg = new InfoMessage(103, param);
+    InfoMessage* msg = new InfoMessage(13, param);
 
     int numberToAdd = 32 - param.length();
     if (numberToAdd != 0) {
