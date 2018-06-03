@@ -10,7 +10,7 @@
 
 void SendFileTcp::execute(void) {
     if (!NetMainThread::getNodeInfo()->containsLocalFile(msg.hash)) {
-        UdpCommunication::sendInfoMsgUDP(new InfoMessage(401), ip, NetMainThread::port);
+        UdpCommunication::sendInfoMsgUDP(new InfoMessage(41), ip, NetMainThread::port);
         return;
     }
 
@@ -18,7 +18,7 @@ void SendFileTcp::execute(void) {
     std::string fileStr;
     std::ifstream file(msg.hash, std::ios::in | std::ios::binary);
     if (!file) {
-        UdpCommunication::sendInfoMsgUDP(new InfoMessage(401), ip, NetMainThread::port);
+        UdpCommunication::sendInfoMsgUDP(new InfoMessage(41), ip, NetMainThread::port);
         return;
     }
     file.seekg(0, std::ios::end); //how big is file
