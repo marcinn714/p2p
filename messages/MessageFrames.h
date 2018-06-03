@@ -16,7 +16,7 @@ public:
     InfoMessage(const InfoMessage & other);
     void fillName();
     char opcode;
-    static const int FILE_NAME_SIZE = 32;
+    static const int FILE_NAME_SIZE = 33;
     char hash[FILE_NAME_SIZE];
     char * converToByte();
     void fillInfoMessage(char *buf);
