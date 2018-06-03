@@ -40,22 +40,26 @@ NodeInfo * NetMainThread::getNodeInfo(void){
 void NetMainThread::receiveNetworkMessages(void) {
     std::cout << "Net Main Thread's started" << std::endl;
     InfoMessage * msg = new InfoMessage();
+    bool isMe = false;
     while (udpCommunication->receiveInfoMsgUDP(msg, port, &socketAddrIn)) {
         switch(msg->opcode) {
             case 10: //new node wants to join
             {
 
                 msg->opcode = 20;
-//                InfoMessage *msg = new InfoMessage(20);
                 udpCommunication->sendInfoMsgUDP(msg, socketAddrIn.sin_addr, joinNetworkPort);
                 nodeInfo->addNewNode(socketAddrIn.sin_addr);
                 break;
             }
             case 11: //node wants to leave (this node or another)
             {
+                if (NetUtils::netIpToStringIp(socketAddrIn.sin_addr) == NetUtils::netIpToStringIp(NetUtils::getMyIP())) {
+                    pthread_cancel(tcpThread);
+                    isMe = true;
+                }
                 nodeInfo->removeNode(socketAddrIn.sin_addr);
-                pthread_cancel(tcpThread);
-                Command::exitCommand(this);
+                if (isMe)
+                    Command::exitCommand(this);
                 break;
             }
             case 12: //other node wants local files table
