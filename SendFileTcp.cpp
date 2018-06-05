@@ -9,14 +9,14 @@
 #include <string>
 
 void SendFileTcp::execute(void) {
-    if (!NetMainThread::getNodeInfo()->containsLocalFile(msg.hash)) {
+    if (!NetMainThread::getNodeInfo()->containsLocalFile(msg.fileName)) {
         UdpCommunication::sendInfoMsgUDP(new InfoMessage(41), ip, NetMainThread::port);
         return;
     }
 
 
     std::string fileStr;
-    std::ifstream file(msg.hash, std::ios::in | std::ios::binary);
+    std::ifstream file(msg.fileName, std::ios::in | std::ios::binary);
     if (!file) {
         UdpCommunication::sendInfoMsgUDP(new InfoMessage(41), ip, NetMainThread::port);
         return;
@@ -27,5 +27,5 @@ void SendFileTcp::execute(void) {
 
     fileStr.assign((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //copy file to string
 
-    TcpCommunication::sendFileTCP(msg.hash, &fileStr, ip);
+    TcpCommunication::sendFileTCP(msg.fileName, &fileStr, ip);
 }

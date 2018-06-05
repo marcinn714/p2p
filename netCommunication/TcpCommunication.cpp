@@ -70,10 +70,6 @@ void TcpCommunication::createAndConfigureSocket() {
     listen(sock, 5);
 }
 
-void TcpCommunication::closeSocket() {
-    close(sock);
-}
-
 ssize_t TcpCommunication::readData(int socket, char *buf, int size) {
     return read(socket, buf, size);
 }
@@ -99,4 +95,8 @@ bool TcpCommunication::sendFilesTable(std::string *stringData, struct in_addr ta
 
     close(sockfd);
     return true;
+}
+
+void TcpCommunication::closeSocket() {
+    close(sock);
 }

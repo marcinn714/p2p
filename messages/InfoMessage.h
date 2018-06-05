@@ -18,11 +18,13 @@ public:
     char * converToByte();
     void fillInfoMessage(char *buf);
 
-    static const int FILE_NAME_SIZE = 33;
+    static const int FILE_NAME_SIZE = 32;
     char opcode;
-    char hash[FILE_NAME_SIZE];
+    char fileName[FILE_NAME_SIZE];
+
 };
 
 
 
-#endif TIN_INFOMESSAGE_H
+#endif //TIN_INFOMESSAGE_H
+
