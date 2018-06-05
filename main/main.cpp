@@ -12,14 +12,13 @@
 
 std::string availableCommands = "Type:\n\
 \tjoin\t to join or build P2P network\n\
-\tadd\t <filename> to add file to P2P network\n\
-\tget\t <hash> to get file from P2P network\n\
-\tremove\t <hash> to remove file from P2P network\n\
+\tadd\t     <file name> to add file to P2P network\n\
+\tget\t     <file name> to get file from P2P network\n\
+\tremove\t <file name> to remove file from P2P network\n\
 \tlist\t to get list of all available files in P2P network\n\
 \tstat\t to get information about current P2P network\n\
 \tinfo\t to get available commands\n\
-\tleave\t to leave from P2P network\n\
-\texit\t to force leaving from P2P network\n";
+\tleave\t to leave from P2P network\n";
 
 Command * newTerminalCommand(std::string textCommand)
 {
