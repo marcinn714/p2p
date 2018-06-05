@@ -5,7 +5,8 @@
 #include "SendFileTcp.h"
 #include "../threads/NetMainThread.h"
 #include "../../netCommunication/TcpCommunication.h"
-#include "AddFile.hpp"
+#include "AddFile.h"
+
 
 #include <string>
 

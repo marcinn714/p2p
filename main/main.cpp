@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../applicationLogic/commands/Command.hpp"
 #include "../applicationLogic/threads/NetMainThread.h"
-#include "../applicationLogic/files/AddFile.hpp"
+#include "../applicationLogic/files/AddFile.h"
 #include "../applicationLogic/files/GetFile.h"
 #include "../applicationLogic/files/RemoveFile.h"
 #include "../applicationLogic/fileTables/ListFilesRequest.h"
