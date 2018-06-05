@@ -15,6 +15,8 @@ void GetFile::execute(void) {
         param.append(numberToAdd, 0);
     }
 
+    NodeInfo * n = NetMainThread::getNodeInfo();
+
     if (!NetMainThread::getNodeInfo()->containsRemoteFile(param)) {
         std::cout << "No such file in network" << std::endl;
         return;

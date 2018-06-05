@@ -10,6 +10,8 @@ void ListFilesRequest::execute(void)
     if (NetMainThread::getNodeInfo() == nullptr)
         return;
 
+    NetMainThread::getNodeInfo()->resetFilesInNetwork();
+
     InfoMessage *msg = new InfoMessage(12);
     NodeInfo * nInfo = NetMainThread::getNodeInfo();
     for(auto addr : nInfo->getAllNodes()) {

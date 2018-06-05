@@ -23,7 +23,7 @@ void FilesTableSend::insertData(std::string fileName)
 {
     int numberToAdd = 32 - fileName.length();
     if (numberToAdd != 0)
-        fileName.append(numberToAdd, 0);
+        fileName.append(numberToAdd + 1, 0);
 
     fileTableData << fileName;
 }

@@ -13,8 +13,6 @@ void FilesTableReceive::execute()
     int readBytes;
     std::string fileName;
 
-    NetMainThread::getNodeInfo()->resetFilesInNetwork();
-
     do {
         memset(buf, 0, sizeof(buf));
         if ((readBytes = tcpCommunication->readData(socket,buf, bufSize)) == -1)
@@ -38,5 +36,5 @@ void FilesTableReceive::execute()
 std::string FilesTableReceive::trim(std::string str) {
     char c = 0;
     int strBegin = str.find_first_not_of(c);
-    return str.substr(strBegin);
+    return str.substr(strBegin).append(strBegin, 0);
 }
