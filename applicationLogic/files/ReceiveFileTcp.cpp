@@ -3,6 +3,7 @@
 //
 
 #include "ReceiveFileTcp.h"
+#include "AddFile.h"
 
 void ReceiveFileTcp::execute(void)
 {
@@ -13,7 +14,7 @@ void ReceiveFileTcp::execute(void)
     if (tcpCommunication->readData(socket, fileName, InfoMessage::FILE_NAME_SIZE) < 0) //read filename
         perror("reading stream message");
 
-    std::ofstream newFile(fileName, std::ios::out);
+    std::ofstream newFile(AddFile::LOCATION + fileName, std::ios::out);
     do {
         memset(buf, 0, sizeof(buf));
         if ((readBytes = tcpCommunication->readData(socket, buf, 1024)) < 0)

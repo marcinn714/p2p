@@ -10,7 +10,7 @@ void GetFile::execute(void) {
         return;
     InfoMessage* msg = new InfoMessage(13, param);
 
-    int numberToAdd = 32 - param.length();
+    int numberToAdd = 30 - param.length();
     if (numberToAdd != 0) {
         param.append(numberToAdd, 0);
     }

@@ -45,6 +45,7 @@ void NetMainThread::receiveNetworkMessages(void) {
         switch(msg->opcode) {
             case 10: //new node wants to join
             {
+                sleep(1);
                 msg->opcode = 20;
                 udpCommunication->sendInfoMsgUDP(msg, socketAddrIn.sin_addr, joinNetworkPort);
                 nodeInfo->addNewNode(socketAddrIn.sin_addr);
