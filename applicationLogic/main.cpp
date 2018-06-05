@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../applicationLogic/commands/Command.hpp"
-#include "../applicationLogic/threads/NetMainThread.h"
-#include "../applicationLogic/files/AddFile.h"
-#include "../applicationLogic/files/GetFile.h"
-#include "../applicationLogic/files/RemoveFile.h"
-#include "../applicationLogic/fileTables/ListFilesRequest.h"
-#include "../applicationLogic/commands/Leave.h"
-#include "../applicationLogic/commands/PrintStats.h"
+#include "commands/Command.hpp"
+#include "threads/NetMainThread.h"
+#include "files/AddFile.h"
+#include "files/GetFile.h"
+#include "files/RemoveFile.h"
+#include "fileTables/ListFilesRequest.h"
+#include "commands/Leave.h"
+#include "commands/PrintStats.h"
 
 
 std::string availableCommands = "Type:\n\
