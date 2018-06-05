@@ -18,7 +18,7 @@ public:
     char * converToByte();
     void fillInfoMessage(char *buf);
 
-    static const int FILE_NAME_SIZE = 32;
+    static const int FILE_NAME_SIZE = 31;
     char opcode;
     char fileName[FILE_NAME_SIZE];
 

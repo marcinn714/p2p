@@ -21,7 +21,7 @@ FilesTableSend::FilesTableSend(struct in_addr _targetNodeIP)
 
 void FilesTableSend::insertData(std::string fileName)
 {
-    int numberToAdd = 32 - fileName.length();
+    int numberToAdd = 30 - fileName.length();
     if (numberToAdd != 0)
         fileName.append(numberToAdd + 1, 0);
 

@@ -8,7 +8,7 @@
 
 void FilesTableReceive::execute()
 {
-    const unsigned bufSize = 25*32; // 32 is size of fileName (string)
+    const unsigned bufSize = 25*30; // 32 is size of fileName (string)
     char buf[bufSize];
     int readBytes;
     std::string fileName;
@@ -19,9 +19,9 @@ void FilesTableReceive::execute()
             perror("reading stream message");
         if (readBytes != 0)
         {
-                for(unsigned i = 0; i < (unsigned)readBytes/32; ++i)
+                for(unsigned i = 0; i < (unsigned)readBytes/30; ++i)
                 {
-                    fileName.assign(&buf[i*32], 32);
+                    fileName.assign(&buf[i*30], 30);
                     fileName = trim(fileName);
                     std::cout<<"File name - ower: "
                              << fileName <<  " - " << NetUtils::netIpToStringIp(sendingIp)<< std::endl;
