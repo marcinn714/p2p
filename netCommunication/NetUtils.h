@@ -6,7 +6,7 @@
 #define TIN_NETUTILS_H
 
 #include <string>
-#include "../messages/MessageFrames.h"
+#include "../messages/InfoMessage.h"
 
 class NetUtils {
 public:

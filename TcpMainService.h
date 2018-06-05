@@ -11,7 +11,7 @@
 #include <pthread.h>
 #include <string>
 #include <unistd.h>
-#include "messages/MessageFrames.h"
+#include "messages/InfoMessage.h"
 #include "FilesTableReceive.h"
 #include "ReceiveFileTcp.h"
 #include "netCommunication/TcpCommunication.h"

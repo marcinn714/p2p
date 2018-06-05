@@ -9,7 +9,7 @@
 #include <string>
 #include "netCommunication/NetUtils.h"
 
-#include "messages/MessageFrames.h"
+#include "messages/InfoMessage.h"
 #include "netCommunication/NetUtils.h"
 #include "TcpMainService.h"
 #include "FilesTableSend.h"

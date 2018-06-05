@@ -2,8 +2,8 @@
 // Created by marcin on 15.05.18.
 //
 
-#ifndef TIN_MESSAGEFRAMES_H
-#define TIN_MESSAGEFRAMES_H
+#ifndef TIN_INFOMESSAGE_H
+#define TIN_INFOMESSAGE_H
 
 
 #include <cstdlib>
@@ -14,14 +14,15 @@ public:
     InfoMessage(char opcode = 0);
     InfoMessage(char _opcode, std::string fileName);
     InfoMessage(const InfoMessage & other);
-    void fillName();
-    char opcode;
-    static const int FILE_NAME_SIZE = 33;
-    char hash[FILE_NAME_SIZE];
+
     char * converToByte();
     void fillInfoMessage(char *buf);
+
+    static const int FILE_NAME_SIZE = 33;
+    char opcode;
+    char hash[FILE_NAME_SIZE];
 };
 
 
 
-#endif //TIN_MESSAGEFRAMES_H
+#endif TIN_INFOMESSAGE_H

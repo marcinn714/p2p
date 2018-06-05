@@ -6,9 +6,9 @@
 #define LISTFILESREQUEST_H_
 
 #include "Command.hpp"
-#include "messages/MessageFrames.h"
+#include "messages/InfoMessage.h"
 #include "NetMainThread.h"
-#include "messages/MessageFrames.h"
+#include "messages/InfoMessage.h"
 #include "NetMainThread.h"
 #include "NodeInfo.h"
 #include <cstdlib>

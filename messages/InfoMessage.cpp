@@ -2,7 +2,7 @@
 // Created by marcin on 15.05.18.
 //
 
-#include "MessageFrames.h"
+#include "InfoMessage.h"
 #include <string.h>
 #include <string>
 

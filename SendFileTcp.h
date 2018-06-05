@@ -3,7 +3,7 @@
 
 #include <netinet/in.h>
 #include "Command.hpp"
-#include "messages/MessageFrames.h"
+#include "messages/InfoMessage.h"
 
 class SendFileTcp: public Command {
 public:
