@@ -24,6 +24,7 @@ void FilesTableReceive::execute()
                 for(unsigned i = 0; i < (unsigned)readBytes/32; ++i)
                 {
                     fileName.assign(&buf[i*32], 32);
+                    fileName = trim(fileName);
                     std::cout<<"File name - ower: "
                              << fileName <<  " - " << NetUtils::netIpToStringIp(sendingIp)<< std::endl;
                     NetMainThread::getNodeInfo()->addFileToFilesInNetwork(fileName, sendingIp);
@@ -31,4 +32,11 @@ void FilesTableReceive::execute()
         }
     } while (readBytes != 0);
     close(socket);
+}
+
+
+std::string FilesTableReceive::trim(std::string str) {
+    char c = 0;
+    int strBegin = str.find_first_not_of(c);
+    return str.substr(strBegin);
 }

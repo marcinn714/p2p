@@ -28,6 +28,7 @@ public:
 
     void execute();
     bool reqSeparateThread(void) {	return true; }
+    std::string trim(std::string str);
 
 private:
     int socket;
