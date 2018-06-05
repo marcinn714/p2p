@@ -5,8 +5,8 @@
 #ifndef FILESTABLESEND_H_
 #define FILESTABLESEND_H_
 
-#include "Command.hpp"
-#include "netCommunication/TcpCommunication.h"
+#include "../commands/Command.hpp"
+#include "../../netCommunication/TcpCommunication.h"
 #include <sstream>
 #include <string>
 #include <sys/types.h>

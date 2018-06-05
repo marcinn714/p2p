@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include "PrintStats.h"
-#include "netCommunication/NetUtils.h"
-#include "NetMainThread.h"
+#include "../../netCommunication/NetUtils.h"
+#include "../threads/NetMainThread.h"
 
 
 void PrintStats::execute(void)

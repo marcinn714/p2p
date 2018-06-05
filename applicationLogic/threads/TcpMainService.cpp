@@ -3,7 +3,7 @@
 //
 
 #include "TcpMainService.h"
-#include "FilesTableReceive.h"
+#include "../fileTables/FilesTableReceive.h"
 
 
 Command * TcpMainService::getCommand(size_t opcode, int socketFd, struct in_addr sendingIp)

@@ -1,20 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Command.hpp"
-#include "netCommunication/NetUtils.h"
-#include "NetMainThread.h"
-#include "AddFile.hpp"
-#include "GetFile.h"
-#include "RemoveFile.h"
-#include "ListFilesRequest.h"
-#include "Leave.h"
-#include "PrintStats.h"
+#include "../applicationLogic/commands/Command.hpp"
+#include "../applicationLogic/threads/NetMainThread.h"
+#include "../applicationLogic/files/AddFile.hpp"
+#include "../applicationLogic/files/GetFile.h"
+#include "../applicationLogic/files/RemoveFile.h"
+#include "../applicationLogic/fileTables/ListFilesRequest.h"
+#include "../applicationLogic/commands/Leave.h"
+#include "../applicationLogic/commands/PrintStats.h"
 
-
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <pthread.h>
 
 std::string availableCommands = "Type:\n\
 \tjoin\t to join or build P2P network\n\

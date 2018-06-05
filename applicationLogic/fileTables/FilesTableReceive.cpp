@@ -3,7 +3,7 @@
 //
 
 #include "FilesTableReceive.h"
-#include "NetMainThread.h"
+#include "../threads/NetMainThread.h"
 #include <iostream>
 
 void FilesTableReceive::execute()

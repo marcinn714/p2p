@@ -4,16 +4,16 @@
 
 #ifndef TIN_NETMAINTHREAD_H
 #define TIN_NETMAINTHREAD_H
-#include "Command.hpp"
-#include "NodeInfo.h"
+#include "../commands/Command.hpp"
+#include "../Node/NodeInfo.h"
 #include <string>
-#include "netCommunication/NetUtils.h"
+#include "../../netCommunication/NetUtils.h"
 
-#include "messages/InfoMessage.h"
-#include "netCommunication/NetUtils.h"
+#include "../../messages/InfoMessage.h"
+#include "../../netCommunication/NetUtils.h"
 #include "TcpMainService.h"
-#include "FilesTableSend.h"
-#include "netCommunication/UdpCommunication.h"
+#include "../fileTables/FilesTableSend.h"
+#include "../../netCommunication/UdpCommunication.h"
 
 class NetMainThread: public Command
 {

@@ -5,8 +5,8 @@
 #ifndef FILESTABLERECEIVE_H_
 #define FILESTABLERECEIVE_H_
 
-#include "Command.hpp"
-#include "netCommunication/TcpCommunication.h"
+#include "../commands/Command.hpp"
+#include "../../netCommunication/TcpCommunication.h"
 #include <cstdlib>
 #include <string.h>
 #include <unistd.h>

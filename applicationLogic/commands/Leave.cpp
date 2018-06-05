@@ -3,7 +3,7 @@
 //
 
 #include "Leave.h"
-#include "NetMainThread.h"
+#include "../threads/NetMainThread.h"
 
 void Leave::execute(void) {
     if (NetMainThread::getNodeInfo() == nullptr)

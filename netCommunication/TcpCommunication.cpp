@@ -3,7 +3,7 @@
 //
 
 #include "TcpCommunication.h"
-#include "../NetMainThread.h"
+#include "../applicationLogic/threads/NetMainThread.h"
 
 
 bool TcpCommunication::sendFileTCP(std::string fileName, std::string* stringFile, struct in_addr ip) {

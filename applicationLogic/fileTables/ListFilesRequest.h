@@ -5,12 +5,12 @@
 #ifndef LISTFILESREQUEST_H_
 #define LISTFILESREQUEST_H_
 
-#include "Command.hpp"
-#include "messages/InfoMessage.h"
-#include "NetMainThread.h"
-#include "messages/InfoMessage.h"
-#include "NetMainThread.h"
-#include "NodeInfo.h"
+#include "../commands/Command.hpp"
+#include "../../messages/InfoMessage.h"
+#include "../threads/NetMainThread.h"
+#include "../../messages/InfoMessage.h"
+#include "../threads/NetMainThread.h"
+#include "../Node/NodeInfo.h"
 #include <cstdlib>
 #include <unistd.h>
 #include <arpa/inet.h>

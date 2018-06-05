@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "NodeInfo.h"
-#include "netCommunication/NetUtils.h"
+#include "../../netCommunication/NetUtils.h"
 
 void NodeInfo::addLocalFile(std::string fileName){
     files.insert(fileName);

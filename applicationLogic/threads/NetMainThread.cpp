@@ -22,8 +22,8 @@
 #include <net/if.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
-#include "messages/InfoMessage.h"
-#include "SendFileTcp.h"
+#include "../../messages/InfoMessage.h"
+#include "../files/SendFileTcp.h"
 
 NodeInfo* NetMainThread::nodeInfo;
 

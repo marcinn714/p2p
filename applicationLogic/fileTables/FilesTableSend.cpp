@@ -3,7 +3,7 @@
 //
 
 #include "FilesTableSend.h"
-#include "NetMainThread.h"
+#include "../threads/NetMainThread.h"
 
 
 #include <cstdint>

@@ -9,7 +9,7 @@
 #include <zconf.h>
 #include "NetUtils.h"
 #include "../messages/InfoMessage.h"
-#include "../NetMainThread.h"
+#include "../applicationLogic/threads/NetMainThread.h"
 
 std::string NetUtils::getSelfIpAddress(void)
 {

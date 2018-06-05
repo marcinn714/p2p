@@ -5,7 +5,7 @@
 #ifndef RECEIVEFILETCP_H_
 #define RECEIVEFILETCP_H_
 
-#include "Command.hpp"
+#include "../commands/Command.hpp"
 #include <cstdlib>
 #include <string.h>
 #include <unistd.h>
@@ -16,8 +16,8 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
-#include "NetMainThread.h"
-#include "netCommunication/TcpCommunication.h"
+#include "../threads/NetMainThread.h"
+#include "../../netCommunication/TcpCommunication.h"
 
 class ReceiveFileTcp: public Command
 {

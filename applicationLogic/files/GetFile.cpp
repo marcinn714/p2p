@@ -3,7 +3,7 @@
 //
 
 #include "GetFile.h"
-#include "NetMainThread.h"
+#include "../threads/NetMainThread.h"
 
 void GetFile::execute(void) {
     if (NetMainThread::getNodeInfo() == nullptr)

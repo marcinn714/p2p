@@ -3,8 +3,9 @@
 //
 
 #include "SendFileTcp.h"
-#include "NetMainThread.h"
-#include "netCommunication/TcpCommunication.h"
+#include "../threads/NetMainThread.h"
+#include "../../netCommunication/TcpCommunication.h"
+#include "AddFile.hpp"
 
 #include <string>
 
@@ -16,7 +17,7 @@ void SendFileTcp::execute(void) {
 
 
     std::string fileStr;
-    std::ifstream file(msg.fileName, std::ios::in | std::ios::binary);
+    std::ifstream file(AddFile::LOCATION + msg.fileName, std::ios::in | std::ios::binary);
     if (!file) {
         UdpCommunication::sendInfoMsgUDP(new InfoMessage(41), ip, NetMainThread::port);
         return;

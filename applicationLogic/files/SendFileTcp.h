@@ -2,8 +2,8 @@
 #define SRC_SENDFILETCP_H_
 
 #include <netinet/in.h>
-#include "Command.hpp"
-#include "messages/InfoMessage.h"
+#include "../commands/Command.hpp"
+#include "../../messages/InfoMessage.h"
 
 class SendFileTcp: public Command {
 public:

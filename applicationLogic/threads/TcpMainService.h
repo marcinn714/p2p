@@ -6,15 +6,15 @@
 #define TIN_TCPMAINSERVICE_H
 
 
-#include "Command.hpp"
+#include "../commands/Command.hpp"
 #include <cstdlib>
 #include <pthread.h>
 #include <string>
 #include <unistd.h>
-#include "messages/InfoMessage.h"
-#include "FilesTableReceive.h"
-#include "ReceiveFileTcp.h"
-#include "netCommunication/TcpCommunication.h"
+#include "../../messages/InfoMessage.h"
+#include "../fileTables/FilesTableReceive.h"
+#include "../files/ReceiveFileTcp.h"
+#include "../../netCommunication/TcpCommunication.h"
 
 class TcpMainService: public Command
 {

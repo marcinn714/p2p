@@ -3,7 +3,7 @@
 //
 
 #include "RemoveFile.h"
-#include "NetMainThread.h"
+#include "../threads/NetMainThread.h"
 
 void RemoveFile::execute()
 {

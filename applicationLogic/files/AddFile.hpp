@@ -5,10 +5,10 @@
 #ifndef ADDNODE_H_
 #define ADDNODE_H_
 
-#include "Command.hpp"
+#include "../commands/Command.hpp"
 #include <string>
-#include "netCommunication/NetUtils.h"
-#include "NetMainThread.h"
+#include "../../netCommunication/NetUtils.h"
+#include "../threads/NetMainThread.h"
 
 class AddFile: public Command
 {
@@ -17,7 +17,7 @@ public:
     virtual ~AddFile() {}
 
     void execute(void) {
-        std::ifstream file(fileName.c_str());
+        std::ifstream file(LOCATION + fileName.c_str());
         if (!file.is_open()) {
             std::cout << "There is no such file in working directory" << std::endl;
             return;
@@ -34,8 +34,12 @@ public:
     }
 
     bool reqSeparateThread(void) {return true;}
+
+    static const std::string LOCATION;
 private:
     std::string fileName;
 };
+
+const std::string AddFile::LOCATION = "resources/";
 
 #endif /* ADDNODE_H_ */
