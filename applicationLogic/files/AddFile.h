@@ -16,9 +16,9 @@ public:
     AddFile(std::string _fileName) : fileName(_fileName) {}
     virtual ~AddFile() {}
 
-    void execute(void);
+    void execute();
 
-    bool reqSeparateThread(void) {return true;}
+    bool reqSeparateThread() {return true;}
 
     static const std::string LOCATION;
 private:

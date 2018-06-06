@@ -7,16 +7,15 @@
 
 class SendFileTcp: public Command {
 public:
-    SendFileTcp(InfoMessage _msg, struct in_addr _ip) : msg(_msg), noMutex(false){ip = _ip;}
-    SendFileTcp(InfoMessage _msg, bool _noMutex) : msg(_msg), noMutex(_noMutex) {}
+    SendFileTcp(InfoMessage _msg, struct in_addr _ip) : msg(_msg){ip = _ip;}
+    SendFileTcp(InfoMessage _msg) : msg(_msg) {}
     virtual ~SendFileTcp() {}
 
-    void execute(void);
-    bool reqSeparateThread(void) {return true;}
+    void execute();
+    bool reqSeparateThread() {return true;}
 private:
     InfoMessage msg;
     struct in_addr ip;
-    bool noMutex;
 };
 
 #endif /* SRC_SENDFILETCP_H_ */

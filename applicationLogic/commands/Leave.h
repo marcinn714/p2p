@@ -12,8 +12,8 @@ public:
     Leave() { udpCommunication = new UdpCommunication();}
     virtual ~Leave() {delete udpCommunication;}
 
-    void execute(void);
-    bool reqSeparateThread(void) {return false;}
+    void execute();
+    bool reqSeparateThread() {return false;}
 
 private:
     UdpCommunication *udpCommunication;

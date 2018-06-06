@@ -12,13 +12,13 @@ void ReceiveFileTcp::execute(void)
 
     int readBytes;
     if (tcpCommunication->readData(socket, fileName, InfoMessage::FILE_NAME_SIZE) < 0) //read filename
-        perror("reading stream message");
+        perror("reading stream message error");
 
     std::ofstream newFile(AddFile::LOCATION + fileName, std::ios::out);
     do {
         memset(buf, 0, sizeof(buf));
         if ((readBytes = tcpCommunication->readData(socket, buf, 1024)) < 0)
-            perror("reading stream message");
+            perror("reading stream message error");
         if (readBytes != 0)
             newFile.write(buf, readBytes);
     } while (readBytes != 0);

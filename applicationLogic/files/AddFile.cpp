@@ -7,7 +7,7 @@
 const std::string AddFile::LOCATION = "resources/";
 
 
-void AddFile::execute(void) {
+void AddFile::execute() {
     std::ifstream file(LOCATION + fileName.c_str());
     if (!file.is_open()) {
         std::cout << "There is no such file in working directory" << std::endl;

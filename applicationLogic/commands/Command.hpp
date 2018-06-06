@@ -13,8 +13,8 @@ public:
     Command() {}
     virtual ~Command()	{}
 
-    virtual void execute(void) = 0;
-    virtual bool reqSeparateThread(void) = 0;
+    virtual void execute() = 0;
+    virtual bool reqSeparateThread() = 0;
 
 
     static void * commandExeWrapper(void * command)

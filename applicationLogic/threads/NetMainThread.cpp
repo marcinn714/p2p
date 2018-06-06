@@ -31,16 +31,13 @@ NetMainThread::NetMainThread(): tcpThread(0), firstNode(false) {
     udpCommunication = new UdpCommunication();
 }
 
-
-
-NodeInfo * NetMainThread::getNodeInfo(void){
+NodeInfo * NetMainThread::getNodeInfo(){
     return nodeInfo;
 }
 
-void NetMainThread::receiveNetworkMessages(void) {
+void NetMainThread::receiveNetworkMessages() {
     std::cout << "Net Main Thread's started" << std::endl;
     InfoMessage * msg = new InfoMessage();
-    bool isMe = false;
     while (udpCommunication->receiveInfoMsgUDP(msg, port, &socketAddrIn)) {
         switch(msg->opcode) {
             case 10: //new node wants to join
@@ -53,13 +50,11 @@ void NetMainThread::receiveNetworkMessages(void) {
             }
             case 11: //node wants to leave (this node or another)
             {
+                nodeInfo->removeNode(socketAddrIn.sin_addr);
                 if (NetUtils::netIpToStringIp(socketAddrIn.sin_addr) == NetUtils::netIpToStringIp(NetUtils::getMyIP())) {
                     pthread_cancel(tcpThread);
-                    isMe = true;
-                }
-                nodeInfo->removeNode(socketAddrIn.sin_addr);
-                if (isMe)
                     Command::exitCommand(this);
+                }
                 break;
             }
             case 12: //other node wants local files table
@@ -89,13 +84,12 @@ void NetMainThread::receiveNetworkMessages(void) {
             {
                 std::cout << "File no longer available" << std::endl;
             }
-            std::cout << "";
         }
     }
     delete msg;
 }
 
-void NetMainThread::buildNetwork(void) {
+void NetMainThread::buildNetwork() {
     firstNode = true;
     std::cout << "Didn't receive any response\nStart building new P2P network... ";
     nodeInfo = new NodeInfo();
@@ -117,13 +111,13 @@ void NetMainThread::joinNetwork(InfoMessage * msg) {
     }
 
     while((udpCommunication->receiveInfoMsgUDP(msg, joinNetworkPort, &socketAddrIn, 2)) > 0) {
-        if (msg->opcode == 20) { //msg about network (cnt, sender id, receiver id)
+        if (msg->opcode == 20) {
             nodeInfo->addNewNode(socketAddrIn.sin_addr);
         }
     }
 }
 
-int NetMainThread::init(void)
+int NetMainThread::init()
 {
     InfoMessage * msg = new InfoMessage(10);
     udpCommunication->sendBroadcastInfoMsgUDP(msg, port);
@@ -139,7 +133,7 @@ int NetMainThread::init(void)
     return 0;
 }
 
-void NetMainThread::execute(void)
+void NetMainThread::execute()
 {
     Command * command;
 

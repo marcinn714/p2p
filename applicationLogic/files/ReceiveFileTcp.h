@@ -24,9 +24,9 @@ class ReceiveFileTcp: public Command
 public:
     ReceiveFileTcp(int _socket) : socket(_socket) {tcpCommunication = new TcpCommunication();};
 
-    virtual ~ReceiveFileTcp() {};
-    void execute(void);
-    bool reqSeparateThread(void) {	return true; }
+    virtual ~ReceiveFileTcp() {delete tcpCommunication;};
+    void execute();
+    bool reqSeparateThread() {	return true; }
 
 private:
     int socket;

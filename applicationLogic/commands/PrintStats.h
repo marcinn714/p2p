@@ -14,11 +14,8 @@ class PrintStats: public Command
 public:
     PrintStats() = default;
     virtual ~PrintStats() = default;
-    void execute(void);
-    bool reqSeparateThread(void) { return false; }
-
-private:
-    void printNodeInfo(size_t nodeId, struct in_addr *);
+    void execute();
+    bool reqSeparateThread() { return false; }
 };
 
 #endif /* PRINTSTATS_H_ */

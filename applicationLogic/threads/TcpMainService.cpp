@@ -22,7 +22,7 @@ Command * TcpMainService::getCommand(size_t opcode, int socketFd, struct in_addr
     return command;
 }
 
-void TcpMainService::tcpServiceLoop(void)
+void TcpMainService::tcpServiceLoop()
 {
     tcpCommunication->createAndConfigureSocket();
 
@@ -30,21 +30,16 @@ void TcpMainService::tcpServiceLoop(void)
     int msgsock, opcode;
     struct sockaddr_in client;
     while (true) {
-        if ((opcode = tcpCommunication->receiveOpcode(&msgsock, &client)) != 0) {
+        if ((opcode = tcpCommunication->receiveOpcode(&msgsock, &client)) >= 0) {
             command = getCommand(opcode, msgsock, client.sin_addr);
-            if(command->reqSeparateThread())
-            {
-                pthread_t thread;
-                pthread_create(&thread, NULL, Command::commandExeWrapper, static_cast<void *>(command));
-                pthread_detach(thread);
-            }
-            else
-            {
-                command->execute();
-                delete command;
-            }
-        }
+            pthread_t thread;
+            pthread_create(&thread, NULL, Command::commandExeWrapper, static_cast<void *>(command));
+            pthread_detach(thread);
+
+        } else
+            break;
     }
+    tcpCommunication->closeSocket();
 }
 
 void TcpMainService::execute(void)

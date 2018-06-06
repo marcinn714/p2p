@@ -12,13 +12,15 @@
 
 class GetFile: public Command {
 public:
-    GetFile(std::string _param) : param(_param) { udpCommunication = new UdpCommunication();}
-    virtual ~GetFile() {}
+    GetFile(std::string _fileName) : fileName(_fileName) {
+        udpCommunication = new UdpCommunication();
+    }
+    virtual ~GetFile() {delete udpCommunication;}
 
-    void execute(void);
-    bool reqSeparateThread(void) {return false;}
+    void execute();
+    bool reqSeparateThread() {return false;}
 private:
-    std::string param;
+    std::string fileName;
     UdpCommunication * udpCommunication;
 };
 

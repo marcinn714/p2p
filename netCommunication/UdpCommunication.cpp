@@ -33,10 +33,9 @@ bool UdpCommunication::sendInfoMsgUDP(InfoMessage * msg, struct in_addr nodeAddr
     commonSocketAddrIn.sin_addr = nodeAddr;
 
 
-    if (sendto(commonSocketFd, msg->converToByte(), 32, 0, (struct sockaddr*) &commonSocketAddrIn, slen) < 0)
+    if (sendto(commonSocketFd, msg->converToByte(), sizeof(InfoMessage), 0, (struct sockaddr*) &commonSocketAddrIn, slen) < 0)
         return false;
 
-    std::cout << "wyslano: " <<  +msg->opcode << std::endl;
 
     close(commonSocketFd);
     return true;
@@ -64,10 +63,9 @@ bool UdpCommunication::sendBroadcastInfoMsgUDP(InfoMessage * msg, unsigned port)
 
     if (inet_aton(broadcastAddress.c_str() , &commonSocketAddrIn.sin_addr) == 0)//przypisanie adresu odbiorcy (broadcast)
         return false;
-    if (sendto(commonSocketFd, msg->converToByte(), 32, 0, (struct sockaddr*) &commonSocketAddrIn, slen) < 0)
+    if (sendto(commonSocketFd, msg->converToByte(), sizeof(InfoMessage), 0, (struct sockaddr*) &commonSocketAddrIn, slen) < 0)
         return false;
 
-    std::cout << "wyslano: " <<  +msg->opcode << std::endl;
 
     close(commonSocketFd);
 }
@@ -104,12 +102,11 @@ ssize_t UdpCommunication::receiveInfoMsgUDP(InfoMessage *msg, unsigned port, str
     }
 
     ssize_t recv_len;
-    char buf[32];
-    if ((recv_len = recvfrom(commonSocketFd, buf, 32, 0, (struct sockaddr *) commonSocketAddrIn, &slen)) < 0 && !timeout) {
+    char buf[sizeof(InfoMessage)];
+    if ((recv_len = recvfrom(commonSocketFd, buf, sizeof(InfoMessage), 0, (struct sockaddr *) commonSocketAddrIn, &slen)) < 0 && !timeout) {
         return 0;
     }
     msg->fillInfoMessage(buf);
-    std::cout << "otrzymano: " <<  +msg->opcode << std::endl;
     close(commonSocketFd);
 
     return recv_len;

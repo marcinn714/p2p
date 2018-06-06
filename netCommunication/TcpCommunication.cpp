@@ -32,16 +32,13 @@ bool TcpCommunication::sendFileTCP(std::string fileName, std::string* stringFile
 
 char TcpCommunication::receiveOpcode(int * msgsock, struct sockaddr_in *client) {
     char opcode;
-    int readBytes;
     unsigned addrlen = sizeof(*client);
     if ((*msgsock = accept(sock, (struct sockaddr *) client, &addrlen)) < 0) {
         perror("accept");
     } else {
         memset(&opcode, 0, sizeof(opcode));
-        if ((readBytes = read(*msgsock, &opcode, sizeof(opcode))) == -1)
-            perror("reading stream message");
-        if (readBytes == 0)
-            std::cout << "Ending connection" << std::endl;
+        if (read(*msgsock, &opcode, sizeof(opcode)) == -1)
+            perror("reading stream message error");
         else
             return opcode;
     }
@@ -91,7 +88,6 @@ bool TcpCommunication::sendFilesTable(std::string *stringData, struct in_addr ta
     size_t opcode = 30;
     write(sockfd, &opcode, sizeof(opcode));
     write(sockfd, stringData->c_str(), stringData->size());
-    std::cout << opcode << std::endl;
 
     close(sockfd);
     return true;

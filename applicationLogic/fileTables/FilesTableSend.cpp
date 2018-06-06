@@ -28,7 +28,7 @@ void FilesTableSend::insertData(std::string fileName)
     fileTableData << fileName;
 }
 
-void FilesTableSend::execute(void)
+void FilesTableSend::execute()
 {
     NodeInfo * nodeInfo = NetMainThread::getNodeInfo();
     for (auto &file : nodeInfo->getAllFiles()) {

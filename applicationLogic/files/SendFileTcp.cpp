@@ -10,12 +10,11 @@
 
 #include <string>
 
-void SendFileTcp::execute(void) {
+void SendFileTcp::execute() {
     if (!NetMainThread::getNodeInfo()->containsLocalFile(msg.fileName)) {
         UdpCommunication::sendInfoMsgUDP(new InfoMessage(41), ip, NetMainThread::port);
         return;
     }
-
 
     std::string fileStr;
     std::ifstream file(AddFile::LOCATION + msg.fileName, std::ios::in | std::ios::binary);

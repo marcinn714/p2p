@@ -5,24 +5,21 @@
 #include "GetFile.h"
 #include "../threads/NetMainThread.h"
 
-void GetFile::execute(void) {
+void GetFile::execute() {
     if (NetMainThread::getNodeInfo() == nullptr)
         return;
-    InfoMessage* msg = new InfoMessage(13, param);
+    InfoMessage* msg = new InfoMessage(13, fileName);
 
-    int numberToAdd = 30 - param.length();
+    int numberToAdd = 30 - fileName.length();
     if (numberToAdd != 0) {
-        param.append(numberToAdd, 0);
+        fileName.append(numberToAdd, 0);
     }
 
-    NodeInfo * n = NetMainThread::getNodeInfo();
-
-    if (!NetMainThread::getNodeInfo()->containsRemoteFile(param)) {
+    if (!NetMainThread::getNodeInfo()->containsRemoteFile(fileName)) {
         std::cout << "No such file in network" << std::endl;
         return;
     }
 
-
-    udpCommunication->sendInfoMsgUDP(msg, NetMainThread::getNodeInfo()->getFileOwner(param), NetMainThread::port);
+    udpCommunication->sendInfoMsgUDP(msg, NetMainThread::getNodeInfo()->getFileOwner(fileName), NetMainThread::port);
     delete msg;
 }

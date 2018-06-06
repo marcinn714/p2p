@@ -27,12 +27,12 @@ public:
     NetMainThread();
     virtual ~NetMainThread() { delete nodeInfo; delete udpCommunication; }
 
-    static NodeInfo * getNodeInfo(void);
-    void execute(void);
-    bool reqSeparateThread(void) {return true;}
-    int init(void);
-    void buildNetwork(void);
-    void receiveNetworkMessages(void);
+    static NodeInfo * getNodeInfo();
+    void execute();
+    bool reqSeparateThread() {return true;}
+    int init();
+    void buildNetwork();
+    void receiveNetworkMessages();
     void joinNetwork(InfoMessage * req);
 
 private:

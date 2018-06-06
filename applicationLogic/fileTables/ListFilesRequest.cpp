@@ -5,7 +5,7 @@
 #include "ListFilesRequest.h"
 
 
-void ListFilesRequest::execute(void)
+void ListFilesRequest::execute()
 {
     if (NetMainThread::getNodeInfo() == nullptr)
         return;

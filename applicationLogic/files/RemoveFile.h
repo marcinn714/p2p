@@ -10,13 +10,13 @@
 
 class RemoveFile: public Command {
 private:
-    std::string param;
+    std::string fileName;
 public:
-    RemoveFile(std::string _param): param(_param) {}
+    RemoveFile(std::string _fileName): fileName(_fileName) {}
     virtual ~RemoveFile() = default;
 
-    void execute(void);
-    bool reqSeparateThread(void) {return false;}
+    void execute();
+    bool reqSeparateThread() {return false;}
 };
 
 

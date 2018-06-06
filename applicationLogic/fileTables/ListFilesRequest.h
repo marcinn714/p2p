@@ -28,8 +28,8 @@ public:
     ListFilesRequest(){udpCommunication = new UdpCommunication();}
     virtual ~ListFilesRequest() = default;
 
-    void execute(void);
-    bool reqSeparateThread(void) {	return true;	};
+    void execute();
+    bool reqSeparateThread() {	return true;	};
 private:
     UdpCommunication * udpCommunication;
 };

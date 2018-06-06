@@ -11,5 +11,5 @@ void RemoveFile::execute()
         return;
 
     NodeInfo *nInfo = NetMainThread::getNodeInfo();
-    nInfo->removeLocalFile(param);
+    nInfo->removeLocalFile(fileName);
 }

@@ -19,10 +19,10 @@ class FilesTableSend: public Command
 {
 public:
     FilesTableSend(struct in_addr _targetNodeIP);
-    virtual ~FilesTableSend() = default;
+    virtual ~FilesTableSend() {delete tcpCommunication;};
 
-    void execute(void);
-    bool reqSeparateThread(void) {	return true;	};
+    void execute();
+    bool reqSeparateThread() {	return true;	};
 private:
     void insertData(std::string fileName);
     std::stringstream fileTableData;

@@ -20,14 +20,14 @@ class TcpMainService: public Command
 {
 public:
     TcpMainService() {tcpCommunication = new TcpCommunication();}
-    virtual ~TcpMainService() = default;
+    virtual ~TcpMainService() {delete tcpCommunication;}
 
-    void execute(void);
-    bool reqSeparateThread(void) {	return true; };
+    void execute();
+    bool reqSeparateThread() {	return true; };
 
 private:
     Command * getCommand(size_t opcode, int socketFd, struct in_addr requestingIp);
-    void tcpServiceLoop(void);
+    void tcpServiceLoop();
     TcpCommunication * tcpCommunication;
 };
 

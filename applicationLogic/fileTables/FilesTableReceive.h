@@ -24,10 +24,10 @@ public:
         tcpCommunication = new TcpCommunication();
     };
 
-    virtual ~FilesTableReceive() {};
+    virtual ~FilesTableReceive() {delete tcpCommunication;};
 
     void execute();
-    bool reqSeparateThread(void) {	return true; }
+    bool reqSeparateThread() {	return true; }
     std::string trim(std::string str);
 
 private:
